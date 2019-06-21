@@ -1,3 +1,8 @@
+/*
+ Author: Daniel Favano
+ Description: This is the fourth homework assignement of part 1 of the Swift class offered on pirple.com. The assignment requires you to create a function that takes in two time values and add them together.
+*/
+
 import UIKit
 
 let dayType = "day"
@@ -11,11 +16,13 @@ let hourType = "hour"
 let secondsInADayType = 86400
 let secondsInAMinuteType = 60
 
+//Takes two time values and add them together.
+//Responds with the highest time value that can be represented as a whole number
 func timeAdder(time1: UInt, timeType1 : String, time2 : UInt, timeType2 : String) -> (String,UInt) {
     
     var result : (String, UInt) = ("false", 0)
-    
-    if(!validTimeType(type: timeType1) || !validTimeType(type: timeType2)){
+
+    if (!validTimeType(type: timeType1) || !validTimeType(type: timeType2)){
         return result
     }
     
@@ -31,6 +38,7 @@ func timeAdder(time1: UInt, timeType1 : String, time2 : UInt, timeType2 : String
     return result
 }
 
+//Time Adder Validation
 func validTimeType(type : String) -> Bool {
     
     var result : Bool = false
@@ -171,14 +179,38 @@ func addSeconds(seconds1: UInt, seconds2: UInt) -> UInt{
     return seconds1 + seconds2
 }
 
-let timeTest1 = timeAdder(time1: 5, timeType1: minutesType, time2: 1, timeType2: minutesType)
-print(timeTest1)
 
-let timeTest2 = timeAdder(time1: 24, timeType1: hoursType, time2: 1, timeType2: hoursType)
-print(timeTest2)
+//Tests
+let timeTestMinutes = timeAdder(time1: 5, timeType1: minutesType, time2: 1, timeType2: minutesType)
+print("5 minutes + 1 minute \(timeTestMinutes)")
 
-let timeTest3 = timeAdder(time1: 1, timeType1: dayType, time2: 3, timeType2: minutesType)
-print(timeTest3)
+let timeTestHours = timeAdder(time1: 24, timeType1: hoursType, time2: 1, timeType2: hoursType)
+print("24 hours + 1 hour \(timeTestHours)")
 
-let timeTest4 = timeAdder(time1: 1, timeType1: secondsType, time2: 3, timeType2: secondsType)
-print(timeTest4)
+let timeTestDays = timeAdder(time1: 1, timeType1: dayType, time2: 3, timeType2: daysType)
+print("1 day + 3 days \(timeTestDays)")
+
+let timeTestSeconds = timeAdder(time1: 1, timeType1: secondsType, time2: 3, timeType2: secondsType)
+print("1 second + 3 seconds \(timeTestSeconds)")
+
+let timeTestMinutesAndDays = timeAdder(time1: 3, timeType1: minutesType, time2: 1, timeType2: daysType)
+print("3 minutes + 1 day \(timeTestMinutesAndDays)")
+
+let timeTestMinutesAndSeconds = timeAdder(time1: 3, timeType1: minutesType, time2: 1, timeType2: secondType)
+print("3 minutes + 1 second \(timeTestMinutesAndSeconds)")
+
+let timeTestMinutesAndHours = timeAdder(time1: 3, timeType1: minutesType, time2: 3, timeType2: hourType)
+print("3 minutes + 3 hours \(timeTestMinutesAndHours)")
+
+let timeTestSecondsAndDays = timeAdder(time1: 1, timeType1: secondType, time2: 1, timeType2: daysType)
+print("1 second + 1 day \(timeTestSecondsAndDays)")
+
+let timeTestSecondsAndMinutes = timeAdder(time1: 1, timeType1: secondType, time2: 2, timeType2: minutesType)
+print("1 second + 2 minutes \(timeTestSecondsAndMinutes)")
+
+let timeTestSecondsAndHours = timeAdder(time1: 1, timeType1: secondType, time2: 2, timeType2: hourType)
+print("1 second + 2 hour \(timeTestSecondsAndHours)")
+
+
+
+
